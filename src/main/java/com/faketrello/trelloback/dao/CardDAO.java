@@ -25,6 +25,11 @@ public class CardDAO {
         return jdbcTemplate.update(sql, card.getDescription(), card.getId());
     }
 
+    public int deleteCard(Long id) {
+        String sql = "DELETE FROM cards WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
+    }
+
 
 }
 

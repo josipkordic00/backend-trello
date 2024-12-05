@@ -24,5 +24,9 @@ public class TaskListService {
         return taskListDAO.createTaskList(taskList);
     }
 
+    @Transactional
+    public int deleteTaskList(Long taskListId) {
+        return taskListDAO.deleteTaskList(taskListId);
+    }
 }
 

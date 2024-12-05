@@ -26,5 +26,10 @@ public class CardService {
         return cardDAO.updateCard(card);
     }
 
+    @Transactional
+    public int deleteCard(Long id) {
+        return cardDAO.deleteCard(id);
+    }
+
 }
 

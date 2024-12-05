@@ -25,6 +25,11 @@ public class TaskListDAO {
         return jdbcTemplate.update(sql, taskList.getName(), taskList.getBoardId(), taskList.getPosition());
     }
 
+    public int deleteTaskList(Long taskListId) {
+        String sql = "DELETE FROM tasklists WHERE id = ?";
+        return jdbcTemplate.update(sql, taskListId);
+    }
+
 }
 
 

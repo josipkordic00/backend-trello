@@ -1,14 +1,14 @@
 package com.faketrello.trelloback.controllers;
 
+import com.faketrello.trelloback.entity.ApiResponse;
 import com.faketrello.trelloback.entity.Board;
 import com.faketrello.trelloback.services.BoardService;
+import com.faketrello.trelloback.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/boards")
@@ -36,17 +36,8 @@ public class BoardController {
 
     // Create a new board
     @PostMapping
-    public ResponseEntity<Map<String, Object>> createBoard(@RequestBody Board board) {
+    public ResponseEntity<ApiResponse> createBoard(@RequestBody Board board) {
         int result = boardService.createBoard(board);
-        Map<String, Object> response = new HashMap<>();
-        if (result > 0) {
-            response.put("message", "Board created successfully");
-            response.put("success", true);
-            return ResponseEntity.ok(response);
-        } else {
-            response.put("message", "Failed to create board");
-            response.put("success", false);
-            return ResponseEntity.status(500).body(response);
-        }
+        return ResponseUtil.buildResponse(result, "Board created successfully", "Failed to create board");
     }
 }
