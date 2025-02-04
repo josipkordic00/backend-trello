@@ -1,11 +1,10 @@
 package com.faketrello.trelloback.services;
 
-
 import com.faketrello.trelloback.dao.CardDAO;
 import com.faketrello.trelloback.entity.Card;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,23 +12,9 @@ import java.util.List;
 public class CardService {
 
     @Autowired
-    private CardDAO cardDAO;
+    public CardDAO cardDAO;
 
-
-    @Transactional
-    public int createCard(Card card) {
-        return cardDAO.createCard(card);
+    public List<Card> getAllCardsByTaskListId(Long taskListId){
+        return cardDAO.getAllCardsByTaskListId(taskListId);
     }
-
-    @Transactional
-    public int updateCard(Card card) {
-        return cardDAO.updateCard(card);
-    }
-
-    @Transactional
-    public int deleteCard(Long id) {
-        return cardDAO.deleteCard(id);
-    }
-
 }
-

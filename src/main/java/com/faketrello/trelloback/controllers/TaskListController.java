@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/tasklists")
+@RequestMapping("/tasklist")
 public class TaskListController {
 
     @Autowired
     private TaskListService taskListService;
 
-    // Get tasklists by board ID
-    @GetMapping("/board/{boardId}")
-    public List<TaskList> getTaskListsByBoardId(@PathVariable Long boardId) {
-        return taskListService.getTaskListsByBoardId(boardId);
+    @GetMapping("/board/{id}")
+    public List<TaskList> getAllTaskListsByBoardId(@PathVariable("id") Long boardId) {
+        return taskListService.getAllTaskListsByBoardId(boardId);
     }
 
-    // Create a new tasklist under a board
-    @PostMapping("/board")
+    @GetMapping("/{id}")
+    public TaskList getTaskListById(@PathVariable("id") Long id) {
+        return taskListService.getTaskListById(id);
+    }
+
+    @PostMapping
     public ResponseEntity<ApiResponse> createTaskList(@RequestBody TaskList taskList) {
         int result = taskListService.createTaskList(taskList);
-        return ResponseUtil.buildResponse(result, "Tasklist created successfully", "Failed to create tasklist");
+        return ResponseUtil.buildResponse(result,"Tasklist created", "Failed to create tasklist");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deleteTaskList(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> deleteTaskList(@PathVariable("id") Long id) {
         int result = taskListService.deleteTaskList(id);
-        return ResponseUtil.buildResponse(result, "Tasklist deleted successfully", "Failed to delete tasklist");
+        return ResponseUtil.buildResponse(result,"Tasklist deleted", "Failed to delete tasklist");
     }
-
-
 }

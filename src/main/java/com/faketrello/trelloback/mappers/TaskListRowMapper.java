@@ -18,18 +18,16 @@ public class TaskListRowMapper implements RowMapper<TaskList> {
 
     @Override
     public TaskList mapRow(ResultSet rs, int rowNum) throws SQLException {
+
         TaskList taskList = new TaskList();
         taskList.setId(rs.getLong("id"));
-        taskList.setBoardId(rs.getLong("board_id"));
         taskList.setName(rs.getString("name"));
         taskList.setPosition(rs.getInt("position"));
+        taskList.setBoardId(rs.getLong("board_id"));
 
-
-        String cardSql = "SELECT * FROM cards WHERE tasklist_id = ? ORDER BY position ASC";
-        List<Card> cards = jdbcTemplate.query(cardSql, new CardRowMapper(), taskList.getId());
+        String sql = "SELECT * FROM cards WHERE tasklist_id = ?";
+        List<Card> cards = jdbcTemplate.query(sql, new CardRowMapper(), taskList.getId());
         taskList.setCards(cards);
-
         return taskList;
     }
 }
-

@@ -8,15 +8,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
 public class TaskListService {
 
     @Autowired
     private TaskListDAO taskListDAO;
 
-    public List<TaskList> getTaskListsByBoardId(Long boardId) {
-        return taskListDAO.getTaskListsByBoardId(boardId);
+    public List<TaskList> getAllTaskListsByBoardId(Long boardId) {
+        return taskListDAO.getAllTaskListsByBoardId(boardId);
+    }
+
+    public TaskList getTaskListById(Long taskListId) {
+        return taskListDAO.getTaskListById(taskListId);
     }
 
     @Transactional
@@ -25,8 +28,7 @@ public class TaskListService {
     }
 
     @Transactional
-    public int deleteTaskList(Long taskListId) {
-        return taskListDAO.deleteTaskList(taskListId);
+    public int deleteTaskList(Long id) {
+        return taskListDAO.deleteTaskList(id);
     }
 }
-

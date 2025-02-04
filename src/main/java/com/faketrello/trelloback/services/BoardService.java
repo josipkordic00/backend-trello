@@ -14,11 +14,9 @@ public class BoardService {
     @Autowired
     private BoardDAO boardDAO;
 
-
     public List<Board> getAllBoards() {
         return boardDAO.getAllBoards();
     }
-
 
     public Board getBoardById(Long id) {
         return boardDAO.getBoardById(id);
@@ -28,6 +26,4 @@ public class BoardService {
     public int createBoard(Board board) {
         return boardDAO.createBoard(board);
     }
-
 }
-

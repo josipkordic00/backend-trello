@@ -3,18 +3,19 @@ package com.faketrello.trelloback.entity;
 import java.util.List;
 
 public class Board {
+
     private Long id;
     private String name;
-    private List<TaskList> taskLists;
+    private List<TaskList> tasklists;
 
+    public Board(){
 
-    public Board ()
-    {}
+    }
 
-    public Board(Long id, String name, List<TaskList> taskLists) {
+    public Board(Long id, String name, List<TaskList> tasklists) {
         this.id = id;
         this.name = name;
-        this.taskLists = taskLists;
+        this.tasklists = tasklists;
     }
 
     public Long getId() {
@@ -25,19 +26,19 @@ public class Board {
         this.id = id;
     }
 
+    public List<TaskList> getTasklists() {
+        return tasklists;
+    }
+
+    public void setTasklists(List<TaskList> tasklists) {
+        this.tasklists = tasklists;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<TaskList> getTaskLists() {
-        return taskLists;
-    }
-
-    public void setTaskLists(List<TaskList> taskLists) {
-        this.taskLists = taskLists;
     }
 }

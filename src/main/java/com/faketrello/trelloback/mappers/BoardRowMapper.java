@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BoardRowMapper implements RowMapper<Board> {
+
     private JdbcTemplate jdbcTemplate;
 
     public BoardRowMapper(JdbcTemplate jdbcTemplate) {
@@ -18,14 +19,16 @@ public class BoardRowMapper implements RowMapper<Board> {
 
     @Override
     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+
         Board board = new Board();
+
         board.setId(rs.getLong("id"));
         board.setName(rs.getString("name"));
 
-        String taskListSql = "SELECT * FROM tasklists WHERE board_id = ?";
-        List<TaskList> taskLists = jdbcTemplate.query(taskListSql, new TaskListRowMapper(jdbcTemplate), board.getId());
-        board.setTaskLists(taskLists);
+        String sql = "SELECT * FROM tasklists WHERE board_id=?";
+        List<TaskList> taskLists = jdbcTemplate.query(sql, new TaskListRowMapper(jdbcTemplate), board.getId());
 
+        board.setTasklists(taskLists);
         return board;
     }
 }

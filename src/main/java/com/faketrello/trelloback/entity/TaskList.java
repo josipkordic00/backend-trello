@@ -1,25 +1,23 @@
 package com.faketrello.trelloback.entity;
 
-
 import java.util.List;
 
 public class TaskList {
     private Long id;
-    private Long boardId;
     private String name;
-    private Integer position;
+    private int position;
+    private Long boardId;
     private List<Card> cards;
 
-
-    public TaskList(){
+    public TaskList() {
 
     }
 
-    public TaskList(Long id, Long boardId, String name, Integer position, List<Card> cards) {
+    public TaskList(Long id, String name, int position, Long boardId, List<Card> cards) {
         this.id = id;
-        this.boardId = boardId;
         this.name = name;
         this.position = position;
+        this.boardId = boardId;
         this.cards = cards;
     }
 
@@ -31,14 +29,6 @@ public class TaskList {
         this.id = id;
     }
 
-    public Long getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(Long boardId) {
-        this.boardId = boardId;
-    }
-
     public String getName() {
         return name;
     }
@@ -47,12 +37,20 @@ public class TaskList {
         this.name = name;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(Integer position) {
+    public void setPosition(int position) {
         this.position = position;
+    }
+
+    public Long getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Long boardId) {
+        this.boardId = boardId;
     }
 
     public List<Card> getCards() {
