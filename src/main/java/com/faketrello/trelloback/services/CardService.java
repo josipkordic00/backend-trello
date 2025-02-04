@@ -15,6 +15,7 @@ public class CardService {
     public CardDAO cardDAO;
 
     public List<Card> getAllCardsByTaskListId(Long taskListId){
+        System.out.println("getAllCardsByTaskListId");
         return cardDAO.getAllCardsByTaskListId(taskListId);
     }
 }
