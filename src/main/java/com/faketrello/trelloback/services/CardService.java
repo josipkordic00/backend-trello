@@ -13,6 +13,7 @@ public class CardService {
 
     @Autowired
     public CardDAO cardDAO;
+    public String nesto;
 
     public List<Card> getAllCardsByTaskListId(Long taskListId){
         return cardDAO.getAllCardsByTaskListId(taskListId);
