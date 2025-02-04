@@ -16,7 +16,7 @@ public class CardService {
     public String nesto;
 
     public List<Card> getAllCardsByTaskListId(Long taskListId){
-        System.out.println("main");
+        System.out.println("upgrades");
         return cardDAO.getAllCardsByTaskListId(taskListId);
     }
 }
